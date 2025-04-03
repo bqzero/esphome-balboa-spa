@@ -39,7 +39,7 @@ CONFIG_SCHEMA = cv.Schema(
             default_restore_mode="DISABLED",
         ),
         cv.Optional(CONF_JET3): switch.switch_schema(
-            Jet2Switch,
+            Jet3Switch,
             icon=ICON_FAN,
             default_restore_mode="DISABLED",
         ),
