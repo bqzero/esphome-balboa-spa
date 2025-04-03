@@ -74,6 +74,10 @@ void BalboaSpa::toggle_jet2() {
     send = 0x05;
 }
 
+void BalboaSpa::toggle_jet3() {
+    send = 0x06;
+}
+
 void BalboaSpa::read_serial() {
       x = read();
       Q_in.push(x);
@@ -414,6 +418,14 @@ void BalboaSpa::read_serial() {
       newState = true;
       ESP_LOGD("Spa/jet_2/state", String(d, 0).c_str());
       spaState.jet2 = d;
+    }
+
+    d = bitRead(Q_in[16], 3);
+    if (d != spaState.jet3) 
+    {
+      newState = true;
+      ESP_LOGD("Spa/jet_3/state", String(d, 0).c_str());
+      spaState.jet3 = d;
     }
 
     // 18:Flags Byte 13
