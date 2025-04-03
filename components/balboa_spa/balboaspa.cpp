@@ -420,7 +420,7 @@ void BalboaSpa::read_serial() {
       spaState.jet2 = d;
     }
 
-    d = bitRead(Q_in[16], 3);
+    d = bitRead(Q_in[16], 5);
     if (d != spaState.jet3) 
     {
       newState = true;
