@@ -18,6 +18,7 @@ DEPENDENCIES = ["balboa_spa"]
 Jet1Switch = balboa_spa_ns.class_("Jet1Switch", switch.Switch)
 Jet2Switch = balboa_spa_ns.class_("Jet2Switch", switch.Switch)
 Jet3Switch = balboa_spa_ns.class_("Jet3Switch", switch.Switch)
+BlowerSwitch = balboa_spa_ns.class_("BlowerSwitch", switch.Switch)
 LightsSwitch = balboa_spa_ns.class_("LightsSwitch", switch.Switch)
 
 CONF_JET1 = "jet1"
