@@ -23,6 +23,7 @@ LightsSwitch = balboa_spa_ns.class_("LightsSwitch", switch.Switch)
 CONF_JET1 = "jet1"
 CONF_JET2 = "jet2"
 CONF_JET3 = "jet3"
+CONF_BLOWER = "blower"
 CONF_LIGHTS = "light"
 
 CONFIG_SCHEMA = cv.Schema(
@@ -43,6 +44,11 @@ CONFIG_SCHEMA = cv.Schema(
             icon=ICON_FAN,
             default_restore_mode="DISABLED",
         ),
+        cv.Optional(CONF_BLOWER): switch.switch_schema(
+            BlowerSwitch,
+            icon=ICON_FAN,
+            default_restore_mode="DISABLED",
+        ),
         cv.Optional(CONF_LIGHTS): switch.switch_schema(
             LightsSwitch,
             icon=ICON_LIGHTBULB,
@@ -53,7 +59,7 @@ CONFIG_SCHEMA = cv.Schema(
 async def to_code(config):
     parent = await cg.get_variable(config[CONF_SPA_ID])
 
-    for switch_type in [CONF_JET1, CONF_JET2, CONF_JET3, CONF_LIGHTS]:
+    for switch_type in [CONF_JET1, CONF_JET2, CONF_JET3, CONF_BLOWER, CONF_LIGHTS]:
         if conf := config.get(switch_type):
             sw_var = await switch.new_switch(conf)
             cg.add(sw_var.set_parent(parent))
